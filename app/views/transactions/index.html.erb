@@ -1,6 +1,26 @@
-<h1>KelloggCoin Ledger</h1>
+<h1>KelloggCoin Ledger 🤑</h1>
 
 <!-- Step 1: List all transactions, starting with the ICO -->
+<p>Hi! Below you can see a list of all transactions: </p>
+
+<% 
+transactions = Transaction.all
+users = User.all
+for transaction in transactions 
+amount = transaction["amount"] 
+from_user_id = transaction["from_user_id"]
+to_user_id = transaction["to_user_id"]
+from_user_name = User.where({"from_user_id" => from_user_id})
+%>
+  <ol>
+    <li>
+    <%= amount%> KC from <%= from_user_id %> 
+    to <%= to_user_id %>
+    from <%= from_user_name.inspect %> 
+    to <%= to_user_id %>  
+    </li>
+<% end %>
+</ol>
 
 <!-- Step 2: Calculate and display the balances -->
 
